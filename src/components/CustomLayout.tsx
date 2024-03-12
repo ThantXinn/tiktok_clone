@@ -10,7 +10,7 @@ const CustomLayout = ({ children, postId }: Props) => {
       className={`${
         postId
           ? "w-screen right-0 -top-[68px]"
-          : "w-[75%] max-lg:left-10 top-[68px]"
+          : "w-[75%] max-lg:left-10 top-[110px]"
       } absolute max-lg:w-full right-0`}>
       {children}
     </div>

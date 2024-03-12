@@ -3,7 +3,7 @@
 import { useAppDispatch } from "@/utils/store/hook";
 import { addUsers } from "@/utils/store/slices/appSlice";
 import { signIn, signOut, useSession } from "next-auth/react";
-import Image from "next/image";
+import Image from "next/legacy/image";
 import Link from "next/link";
 import { useParams, useRouter } from "next/navigation";
 import { useEffect } from "react";
@@ -46,13 +46,15 @@ const Navbar = () => {
       }`}>
       <div className='w-400'>
         <Link href={"/"}>
-          <div className='w-[80px]'>
+          <div className='w-20 h-20'>
             <Image
-              className='cursor-pointer rounded'
+              className='flex cursor-pointer object-cover w-16 h-16 max-sm:w-14 max-sm:h-14'
               src={logo}
-              alt='tikknock'
-              width={320}
-              height={320}
+              alt='tiknock'
+              objectFit='contain'
+              layout='responsive'
+              width={500}
+              height={500}
             />
           </div>
         </Link>

@@ -4,7 +4,7 @@ import Comments from "@/components/Comments";
 import CustomLayout from "@/components/CustomLayout";
 import LikeButton from "@/components/LikeButton";
 import { Video } from "@/utils/types/video";
-import Image from "next/legacy/image";
+import Image from "next/image";
 import { useParams, useRouter } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { FaCommentDots, FaHeart, FaPlay } from "react-icons/fa";
@@ -108,9 +108,12 @@ const Details = ({ postDetailsProps }: Props) => {
                       alt='user_profile'
                       width={120}
                       height={120}
-                      objectFit='cover'
                       className='flex rounded-full object-cover'
-                    />
+                      style={{
+                        maxWidth: "100%",
+                        height: "auto",
+                        objectFit: "cover"
+                      }} />
                   </div>
                   <div className='flex flex-col w-[65%] h-14'>
                     <p className='font-semibold text-lg'>

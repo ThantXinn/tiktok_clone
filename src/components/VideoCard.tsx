@@ -1,7 +1,7 @@
 /** @format */
 "use client";
 import { Video } from "@/utils/types/video";
-import Image from "next/legacy/image";
+import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { BsMusicNoteBeamed } from "react-icons/bs";
@@ -46,11 +46,14 @@ const VideoCard = ({ post }: Props) => {
               <Image
                 src={post.postedBy.image}
                 alt='user_image'
-                objectFit='contain'
                 width={70}
                 height={70}
                 className='rounded-full w-16 h-16 max-sm:w-14 max-sm:h-14'
-              />
+                style={{
+                  maxWidth: "100%",
+                  height: "auto",
+                  objectFit: "contain"
+                }} />
             </Link>
           </div>
           <div className='flex flex-col w-[75%] relative max-sm:-left-3'>

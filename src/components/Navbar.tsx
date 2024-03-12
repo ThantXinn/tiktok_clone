@@ -3,7 +3,7 @@
 import { useAppDispatch } from "@/utils/store/hook";
 import { addUsers } from "@/utils/store/slices/appSlice";
 import { signIn, signOut, useSession } from "next-auth/react";
-import Image from "next/legacy/image";
+import Image from "next/image";
 import Link from "next/link";
 import { useParams, useRouter } from "next/navigation";
 import { useEffect } from "react";
@@ -51,10 +51,15 @@ const Navbar = () => {
               className='flex cursor-pointer object-cover w-16 h-16 max-sm:w-14 max-sm:h-14'
               src={logo}
               alt='tiknock'
-              objectFit='contain'
-              layout='responsive'
               width={500}
               height={500}
+              sizes='100vw'
+              layout='responsive'
+              style={{
+                width: "100%",
+                height: "auto",
+                objectFit: "contain",
+              }}
             />
           </div>
         </Link>

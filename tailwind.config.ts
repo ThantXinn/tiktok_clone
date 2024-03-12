@@ -33,6 +33,7 @@ const config: Config = {
       },
       colors: {
         primary: 'rgb(22, 24, 35)',
+        btnColor: '#EF2A51',
       },
       backgroundImage: {
         'blurred-img':

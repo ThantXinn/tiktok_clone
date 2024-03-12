@@ -1,34 +1,32 @@
-import { defineField, defineType } from "sanity";
-
-export default defineType({
+export default {
   name: 'post',
   title: 'Post',
   type: 'document',
   fields: [
-    defineField({
+    {
       name: 'caption',
       title: 'Caption',
       type: 'string',
-    }),
-    ({
+    },
+    {
       name: 'video',
       title: 'Video',
       type: 'file',
       options: {
-        hotspot:true,
+        hotspot: true,
       },
-    }),
-    defineField({
+    },
+    {
       name: 'userId',
       title: 'UserId',
       type: 'string',
-    }),
-    defineField({
+    },
+    {
       name: 'postedBy',
       title: 'PostedBy',
       type: 'postedBy',
-    }),
-    defineField({
+    },
+    {
       name: 'likes',
       title: 'Likes',
       type: 'array',
@@ -38,17 +36,17 @@ export default defineType({
           to: [{ type: 'user' }],
         },
       ],
-    }),
-    defineField({
+    },
+    {
       name: 'comments',
       title: 'Comments',
       type: 'array',
       of: [{ type: 'comment' }],
-    }),
-    defineField({
+    },
+    {
       name: 'topic',
       title: 'Topic',
       type: 'string',
-    }),
+    },
   ],
-});
+};

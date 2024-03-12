@@ -1,7 +1,6 @@
 /** @format */
 
 import MainLayout from "@/Layout/MainLayout";
-import CustomLayout from "@/components/CustomLayout";
 import type { Metadata } from "next";
 import "./globals.css";
 
@@ -18,9 +17,7 @@ export default function RootLayout({
   return (
     <html lang='en'>
       <body>
-        <MainLayout>
-          <CustomLayout>{children}</CustomLayout>
-        </MainLayout>
+        <MainLayout>{children}</MainLayout>
       </body>
     </html>
   );

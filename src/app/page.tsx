@@ -1,9 +1,28 @@
 /** @format */
 
-export default function Home() {
+import VideoCard from "@/components/VideoCard";
+import { allPostsQuery } from "@/utils/groq";
+import { Video } from "@/utils/types/video";
+import { client } from "../../sanity/lib/client";
+
+export const revalidate = 10;
+const Home = async () => {
+  const videos: Video[] = await client.fetch(allPostsQuery());
+
   return (
-    <main className='flex min-h-screen flex-col items-center justify-between p-24'>
-      <h1 className='text-3xl font-bold'>Hello Main Page</h1>
+    <main>
+      {videos.length ? (
+        videos.map((video: Video) => (
+          <VideoCard
+            post={video}
+            key={video._id}
+          />
+        ))
+      ) : (
+        <div></div>
+      )}
     </main>
   );
-}
+};
+
+export default Home;

@@ -6,7 +6,11 @@ interface Props {
   children: React.ReactNode;
 }
 const Container = ({ children }: Props) => {
-  return <div className='max-lg:mx-auto'>{children}</div>;
+  return (
+    <div className='m-auto relative 2xl:w-[1200px] w-full h-[100vh] overflow-scroll'>
+      {children}
+    </div>
+  );
 };
 
 export default Container;

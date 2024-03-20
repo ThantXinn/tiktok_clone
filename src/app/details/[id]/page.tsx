@@ -15,22 +15,19 @@ import { FaHeart, FaShare } from "react-icons/fa6";
 import { RiVolumeMuteFill, RiVolumeUpFill } from "react-icons/ri";
 import { RxCross2 } from "react-icons/rx";
 
-interface Props {
-  postDetailsProps: Video;
-}
-const Details = ({ postDetailsProps }: Props) => {
+const Details = () => {
   const router = useRouter();
   const params = useParams();
   const postId = params.id;
   const videoRef = useRef<HTMLVideoElement>(null);
-  const [postDetails, setPostDetails] = useState(postDetailsProps);
+  const [postDetails, setPostDetails] = useState<Video>();
   const [playing, setPlaying] = useState(false);
   const [muted, setMuted] = useState(false);
   const [addComment, setAddComment] = useState("");
   const [postingComment, setIsPostingComment] = useState(false);
   const currentDate = new Date();
   const postedDate = new Date(currentDate);
-  postedDate.setDate(currentDate.getDate() - 3);
+  postedDate.setDate(currentDate.getDate() - 1);
   const { data: session } = useSession();
   const userProfile: IUser | null = useAppSelector(
     (store) => store.tiknock_clone.userInfo,

@@ -15,12 +15,15 @@ import { FaHeart, FaShare } from "react-icons/fa6";
 import { RiVolumeMuteFill, RiVolumeUpFill } from "react-icons/ri";
 import { RxCross2 } from "react-icons/rx";
 
-const Details = () => {
+interface IProps {
+  videoProps: Video;
+}
+const Details = ({ videoProps }: IProps) => {
   const router = useRouter();
   const params = useParams();
   const postId = params.id;
   const videoRef = useRef<HTMLVideoElement>(null);
-  const [postDetails, setPostDetails] = useState<Video>();
+  const [postDetails, setPostDetails] = useState<Video>(videoProps);
   const [playing, setPlaying] = useState(false);
   const [muted, setMuted] = useState(false);
   const [addComment, setAddComment] = useState("");

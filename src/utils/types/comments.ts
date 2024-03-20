@@ -3,5 +3,6 @@ export interface IComments {
     _key: string;
     postedBy: {
         _ref: string;
+        _id?:string
     };
 }

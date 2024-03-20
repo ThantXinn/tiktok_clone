@@ -7,7 +7,8 @@ interface Props {
 }
 const Container = ({ children }: Props) => {
   return (
-    <div className='m-auto relative 2xl:w-[1200px] w-full h-[100vh] overflow-scroll'>
+    <div
+      className={`m-auto relative !important 2xl:w-[1200px] w-full h-[100vh] overflow-scroll`}>
       {children}
     </div>
   );

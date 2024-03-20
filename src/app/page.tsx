@@ -8,7 +8,6 @@ import { client } from "../../sanity/lib/client";
 export const revalidate = 10;
 const Home = async () => {
   const videos: Video[] = await client.fetch(allPostsQuery());
-
   return (
     <main>
       {videos.length ? (

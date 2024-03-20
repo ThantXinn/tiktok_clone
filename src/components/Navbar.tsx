@@ -2,22 +2,22 @@
 "use client";
 import { useAppDispatch } from "@/utils/store/hook";
 import { addUsers } from "@/utils/store/slices/appSlice";
-import { signIn, signOut, useSession } from "next-auth/react";
-import Image from "next/image";
+import { signIn, useSession } from "next-auth/react";
+import Image from "next/legacy/image";
 import Link from "next/link";
-import { useParams, useRouter } from "next/navigation";
+import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 import { BiMessageAltMinus } from "react-icons/bi";
 import { FaPlus } from "react-icons/fa6";
-import { RiSendPlaneFill } from "react-icons/ri";
-import logo from "../assets/stream_studio.png";
+import { PiPaperPlaneTiltBold } from "react-icons/pi";
+import logo from "../assets/logo.png";
+import SignInOutButton from "./SignInOutButton";
 
 const Navbar = () => {
   const { data: session } = useSession();
   const router = useRouter();
-  const params = useParams();
-  const dispatch = useAppDispatch();
 
+  const dispatch = useAppDispatch();
   useEffect(() => {
     const createOrGetUser = async () => {
       if (session?.user) {
@@ -39,60 +39,64 @@ const Navbar = () => {
     };
     createOrGetUser();
   }, [session?.user]);
+  //console.log(params.id, propsValue);
   return (
     <div
-      className={`w-full justify-between items-center border-b-2 py-2 px-4 gap-3 sticky top-0 bg-white ${
-        params.id ? "hidden" : "flex z-10"
-      }`}>
-      <div className='w-400'>
+      id='nav-bar'
+      className={`w-full justify-between items-center border-b-2 py-2 px-4 gap-3 sticky top-0 bg-white flex z-10 h-16`}>
+      <div className='relative w-32 flex justify-center'>
         <Link href={"/"}>
-          <div className='w-20 h-20'>
+          <div className='relative flex w-full'>
             <Image
-              className='flex cursor-pointer object-cover w-16 h-16 max-sm:w-14 max-sm:h-14'
+              className='cursor-pointer w-20 h-16 max-sm:w-14 max-sm:h-14'
               src={logo}
               alt='tiknock'
-              width={500}
-              height={500}
-              sizes='100vw'
-              layout='responsive'
-              style={{
-                width: "100%",
-                height: "auto",
-                objectFit: "contain",
-              }}
+              objectFit='contain'
+              width={60}
+              height={60}
             />
           </div>
         </Link>
       </div>
       <div className=' w-650 h-12 flex items-center justify-center'>
-        <div className='border-[1px] rounded-full w-450 h-12 flex items-center justify-center'>
+        <div className='border-[1px] rounded-full lg:w-450 md:w-[220px] max-sm:w-[170px] max-sm:h-10 h-12 flex items-center justify-center bg-slate-100'>
           Search
         </div>
       </div>
-      <div className='flex gap-2 w-72 items-center justify-center'>
+      <div className='flex gap-2 w-80 items-center justify-between relative right-3 *:cursor-pointer'>
         <button
           type='button'
           onClick={() => (session?.user ? router.push("/upload") : signIn())}
-          className='flex gap-2 items-center justify-center border-[1px] rounded-sm w-36 h-10 border-slate-200'>
+          className='flex gap-4 items-center justify-center border-[1px] rounded-sm w-36 h-10 border-slate-200 max-lg:w-16'>
           <FaPlus className='text-xl font-semibold' />
-          <p className='text-lg font-semibold'>Upload</p>
+          <p className='text-lg font-semibold max-lg:hidden'>Upload</p>
         </button>
-        <div className='flex gap-2'>
+        <div className='flex gap-2 relative justify-evenly w-1/2 max-lg:hidden'>
           <div>
-            <RiSendPlaneFill />
+            <PiPaperPlaneTiltBold className='text-3xl' />
           </div>
           <div>
-            <BiMessageAltMinus />
-          </div>
-          <div>
-            <p>{session?.user?.name}</p>
+            <BiMessageAltMinus className='text-3xl' />
           </div>
         </div>
-        <button
-          onClick={() => (session?.user ? signOut() : signIn())}
-          className='flex items-center justify-center bg-btnColor w-20 h-10 rounded-md'>
-          {session?.user ? "Sign Out" : "Sign In"}
-        </button>
+        <div className='flex items-center justify-center group hover:relative'>
+          {session?.user ? (
+            <div className=''>
+              <Image
+                src={session.user.image!}
+                alt='user_image'
+                width={30}
+                height={30}
+                className='flex rounded-full w-10 h-10'
+              />
+              <div className='hidden group-hover:flex items-center justify-center absolute -left-10 top-8 h-20'>
+                <SignInOutButton session={session} />
+              </div>
+            </div>
+          ) : (
+            <SignInOutButton session={session} />
+          )}
+        </div>
       </div>
     </div>
   );

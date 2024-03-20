@@ -45,7 +45,7 @@ const Upload = () => {
     if (caption && topic && videoAsset?._id) {
       setSavingPost(true);
 
-      await fetch(`${process.env.NEXTAUTH_URL}/api/post`, {
+      await fetch(`/api/post`, {
         method: "POST",
         headers: {
           "content-type": "application/json",
@@ -93,9 +93,10 @@ const Upload = () => {
                         <p className='text-xl font-semibold'>Upload Video</p>
                       </div>
                       <p className='text-center text-gray-400 mt-10 text-sm leading-8'>
-                        MP4 or WebM or
+                        MP4 or <br />
+                        WebM or
                         <br />
-                        ogg or Mov
+                        ogg
                         <br />
                         720x1280 or higher
                         <br />

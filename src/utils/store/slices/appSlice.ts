@@ -1,23 +1,42 @@
 import { IUser } from "@/utils/types/user";
-import { createSlice } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
 interface IntialAppState{
-    userInfo: IUser[]
+    allUserInfo:IUser[]
+    userInfo: IUser | null,
 }
 
 const initialState: IntialAppState = {
-    userInfo:[]
+    allUserInfo:[],
+    userInfo:null,
 }
 
-export const appSlice = createSlice({
-    name: "appSlice",
+export const fetchAllUsers = createAsyncThunk(
+    "app/fetchAllUsers",
+    async (optioins:any,thankApi) => {
+        try {
+            const res = await fetch(`/api/user`, {
+                method:"GET"
+            })
+            const  {allUserInfo}  = await res.json();
+            thankApi.dispatch(setUsers(allUserInfo))
+        } catch (error) {
+            console.log(error)
+        }
+    }
+)
+const appSlice = createSlice({
+    name: "app",
     initialState,
     reducers: {
         addUsers: (state, action) => {
             state.userInfo = action.payload;
+        },
+        setUsers: (state, action) => {
+            state.allUserInfo = action.payload;
         }
     }
 })
 
-export const { addUsers } = appSlice.actions;
+export const { addUsers,setUsers } = appSlice.actions;
 export default appSlice.reducer;

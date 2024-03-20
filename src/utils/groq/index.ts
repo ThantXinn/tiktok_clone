@@ -95,7 +95,13 @@ export const singleUserQuery = (userId: string | string[]) => {
 };
 
 export const allUsersQuery = () => {
-  const query = `*[_type == "user"]`;
+  const query = `*[_type == "user"] | order(userName asc) {
+    image,
+    _type,
+    _id,
+    userName,
+    _rev
+  }`;
 
   return query;
 };
@@ -117,7 +123,6 @@ export const userCreatedPostsQuery = (userId: string | string[]) => {
       image
     },
  likes,
-
     comments[]{
       comment,
       _key,
@@ -149,7 +154,7 @@ export const userLikedPostsQuery = (userId: string | string[]) => {
       image
     },
  likes,
-
+ 
     comments[]{
       comment,
       _key,

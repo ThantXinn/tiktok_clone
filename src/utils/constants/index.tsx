@@ -4,7 +4,7 @@ import { BsCode, BsEmojiSunglasses } from "react-icons/bs";
 import { FaCode, FaGamepad, FaMedal, FaPaw } from "react-icons/fa";
 import { GiCakeSlice, GiGalaxy, GiLipstick } from "react-icons/gi";
 import { GoHome, GoHomeFill } from "react-icons/go";
-import { MdExplore, MdOutlineExplore } from "react-icons/md";
+import { MdExplore, MdOutlineCamera, MdOutlineExplore } from "react-icons/md";
 import {
   RiGroupFill,
   RiGroupLine,
@@ -83,6 +83,10 @@ export const topics = [
   {
     name: "beauty",
     icon: <GiLipstick />,
+  },
+  {
+    name: "photos",
+    icon: <MdOutlineCamera />,
   },
   {
     name: "animals",

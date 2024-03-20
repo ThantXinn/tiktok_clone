@@ -1,3 +1,4 @@
+import { allUsersQuery } from "@/utils/groq";
 import { NextRequest, NextResponse } from "next/server";
 import { client } from "../../../../sanity/lib/client";
 
@@ -17,5 +18,15 @@ export async function POST(req: NextRequest) {
         return NextResponse.json({message:"user created successfull"},{status:200})
     } catch (error) {
         return NextResponse.json({error},{status:500})
+    }
+}
+
+export async function GET(req:NextRequest) {
+    const allUserInfo:[] = await client.fetch(allUsersQuery());
+
+    if (allUserInfo) {
+        return NextResponse.json({allUserInfo},{status:200})
+    } else {
+        return NextResponse.json([]);
     }
 }

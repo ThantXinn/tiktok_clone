@@ -5,7 +5,6 @@ import { allPostsQuery } from "@/utils/groq";
 import { Video } from "@/utils/types/video";
 import { client } from "../../sanity/lib/client";
 
-export const revalidate = 10;
 const Home = async () => {
   const videos: Video[] = await client.fetch(allPostsQuery());
   return (
@@ -18,7 +17,9 @@ const Home = async () => {
           />
         ))
       ) : (
-        <div></div>
+        <div className='text-black'>
+          <p>Loading</p>
+        </div>
       )}
     </main>
   );

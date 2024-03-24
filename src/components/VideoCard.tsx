@@ -19,8 +19,9 @@ import LikeButton from "./LikeButton";
 interface Props {
   post: Video;
   userId?: string | string[];
+  className?: string;
 }
-const VideoCard = ({ post, userId }: Props) => {
+const VideoCard = ({ post, userId, className }: Props) => {
   const [isHover, setIsHover] = useState(false);
   const [play, setPlay] = useState(false);
   const [muted, setMuted] = useState(false);
@@ -75,9 +76,13 @@ const VideoCard = ({ post, userId }: Props) => {
   return (
     <div
       id='video_card'
-      className={`flex flex-col items-center justify-center py-2 w-full relative md:w-[85%] xl:h-[670px]  ${
+      className={`${
+        className
+          ? className
+          : "flex flex-col items-center justify-center py-2 w-full relative md:w-[85%] xl:h-[670px]"
+      } ${
         userId ? "max-sm:w-full absolute" : "max-sm:w-[80%]"
-      } max-sm:left-10 left-16`}>
+      } max-sm:left-10`}>
       {!userId ? (
         <div className='flex flex-col px-3 w-full h-screen border-b-[1px] border-gray-200'>
           <div className='flex w-full py-2 sm:py-0 gap-2 sm:gap-0 justify-center'>
@@ -120,7 +125,7 @@ const VideoCard = ({ post, userId }: Props) => {
               </div>
               <div className='flex py-3 gap-2 w-full'>
                 <div
-                  className='relative max-sm:absolute w-full md:w-[380px] md:h-[520px] rounded-md overflow-hidden mt-3 bg-black flex items-center justify-center max-sm:-left-16 max-sm:w-[120%] max-sm:h-[65vh]'
+                  className='relative max-sm:absolute w-full md:w-[380px] md:h-[520px] rounded-md overflow-hidden mt-3 bg-black flex items-center justify-center max-sm:-left-16 max-sm:w-[120%] max-sm:h-[390px]'
                   onMouseEnter={() => setIsHover(true)}
                   onMouseLeave={() => setIsHover(false)}>
                   <Link href={`/details/${post._id}`}>
@@ -219,7 +224,7 @@ const VideoCard = ({ post, userId }: Props) => {
       ) : (
         <div className='relative py-3 gap-2 w-full flex items-center justify-center flex-wrap max-sm:gap-0 -left-14 max-lg:left-0'>
           <div
-            className='relative max-sm:relative w-full md:w-[220px] md:h-[330px] rounded-md overflow-hidden mt-3 bg-black flex items-center justify-center max-sm:-left-10 max-sm:w-[120%] max-sm:h-[290px]'
+            className='relative max-sm:relative w-full md:w-[220px] md:h-[330px] rounded-md overflow-hidden mt-3 bg-black flex items-center justify-center max-sm:-left-10 max-sm:w-[120%] max-sm:h-[390px]'
             onMouseEnter={() => setIsHover(true)}
             onMouseLeave={() => setIsHover(false)}>
             <Link href={`/details/${post._id}`}>

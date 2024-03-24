@@ -52,6 +52,8 @@ const Details = ({ videoProps }: Props) => {
       videoRef.current.muted = muted;
     }
   }, [muted]);
+
+  console.log(postId);
   //onClickLike function
   const handleClickLike = async (like: boolean) => {
     if (userProfile) {
@@ -150,7 +152,7 @@ const Details = ({ videoProps }: Props) => {
       <div className='flex w-[42%] max-sm:w-full max-sm:relative max-sm:top-12 flex-col items-center justify-center h-screen overflow-scroll'>
         <div className='flex flex-col w-full h-72 gap-1'>
           <div className='flex flex-col w-full h-[266px] p-4 border-b-[2px]'>
-            <div className='bg-slate-100 rounded-2xl p-2 w-full h-36 flex flex-col gap-2'>
+            <div className='bg-slate-100 rounded-2xl py-2 px-4 w-full h-36 flex flex-col gap-2'>
               <div className='flex items-center justify-between'>
                 <Link
                   href={`/profile/${postDetails.userId}`}

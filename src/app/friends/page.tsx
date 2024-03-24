@@ -1,13 +1,13 @@
 /** @format */
 
-const Following = () => {
+const Friends = () => {
   return (
     <div
-      id='following_'
+      id='friends_'
       className='relative -top-10 w-[95%] px-3 py-2 ml-8'>
-      Following feature is comming soon.
+      Friends feature is comming soon.
     </div>
   );
 };
 
-export default Following;
+export default Friends;

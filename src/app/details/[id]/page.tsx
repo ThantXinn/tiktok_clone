@@ -3,7 +3,7 @@
 import Details from "@/components/Details";
 
 const DetailsPage = () => {
-  return <Details></Details>;
+  return <Details />;
 };
 
 export default DetailsPage;

@@ -6,16 +6,18 @@ import { signIn, useSession } from "next-auth/react";
 import Image from "next/legacy/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { BiMessageAltMinus } from "react-icons/bi";
 import { FaPlus } from "react-icons/fa6";
+import { FiSearch } from "react-icons/fi";
 import { PiPaperPlaneTiltBold } from "react-icons/pi";
-import logo from "../assets/logo.png";
+import logo from "../assets/song_icon.svg";
 import SignInOutButton from "./SignInOutButton";
 
 const Navbar = () => {
   const { data: session } = useSession();
   const router = useRouter();
+  const [searchValue, setSearchValue] = useState("");
 
   const dispatch = useAppDispatch();
   useEffect(() => {
@@ -40,6 +42,15 @@ const Navbar = () => {
     createOrGetUser();
   }, [session?.user]);
   //console.log(params.id, propsValue);
+
+  const handleSearch = (e: { preventDefault: () => void }) => {
+    e.preventDefault();
+    if (searchValue) {
+      router.push(`/search/${searchValue}`);
+    } else {
+      router.push("/");
+    }
+  };
   return (
     <div
       id='nav-bar'
@@ -48,7 +59,7 @@ const Navbar = () => {
         <Link href={"/"}>
           <div className='relative flex w-full'>
             <Image
-              className='cursor-pointer w-20 h-16 max-sm:w-14 max-sm:h-14'
+              className='cursor-pointer w-20 h-16 max-sm:w-14 max-sm:h-14 rounded'
               src={logo}
               alt='tiknock'
               objectFit='contain'
@@ -59,15 +70,28 @@ const Navbar = () => {
         </Link>
       </div>
       <div className=' w-650 h-12 flex items-center justify-center'>
-        <div className='border-[1px] rounded-full lg:w-450 md:w-[220px] max-sm:w-[170px] max-sm:h-10 h-12 flex items-center justify-center bg-slate-100'>
-          Search
-        </div>
+        <form
+          onSubmit={handleSearch}
+          className='border-[1px] rounded-full lg:w-450 md:w-[220px] max-sm:w-[170px] max-sm:h-10 h-12 flex justify-center bg-slate-100 relative group group-hover:border hover:border-slate-200'>
+          <input
+            type='text'
+            value={searchValue}
+            placeholder='Search'
+            onChange={(e) => setSearchValue(e.target.value)}
+            className='flex w-full h-full bg-transparent px-4 focus:outline-none focus:border focus:border-gray-300 rounded-full py-5'
+          />
+          <button
+            onClick={() => {}}
+            className='absolute right-0 top-2 flex items-center w-12 bg-transparent h-[60%] rounded-tr-full rounded-br-full px-2 border-l border-slate-300 py-3'>
+            <FiSearch className='text-2xl text-slate-400' />
+          </button>
+        </form>
       </div>
       <div className='flex gap-2 w-80 items-center justify-between relative right-3 *:cursor-pointer'>
         <button
           type='button'
           onClick={() => (session?.user ? router.push("/upload") : signIn())}
-          className='flex gap-4 items-center justify-center border-[1px] rounded-sm w-36 h-10 border-slate-200 max-lg:w-16'>
+          className='flex gap-4 items-center justify-center border-[1px] rounded-sm w-36 h-10 border-slate-200 max-lg:w-16 hover:bg-slate-100'>
           <FaPlus className='text-xl font-semibold' />
           <p className='text-lg font-semibold max-lg:hidden'>Upload</p>
         </button>

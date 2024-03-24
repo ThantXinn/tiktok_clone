@@ -94,15 +94,19 @@ const ProfileDetails = () => {
         </div>
         <div
           id='posted_liked'
-          className='flex items-center justify-center w-full -mt-48 md:mt-0 max-sm:mt-0 max-sm:flex-wrap'>
+          className='flex items-center justify-center w-full -mt-48 md:mt-0 max-sm:mt-0 flex-wrap relative'>
           {activeVideosTab ? (
             userCreatedPosts.length > 0 ? (
-              userCreatedPosts.map((post: Video, index: number) => (
-                <VideoCard
-                  key={index}
-                  post={post}
-                  userId={userId}
-                />
+              userCreatedPosts.map((post: Video) => (
+                <div
+                  key={post._id}
+                  className='relative flex-wrap'>
+                  <VideoCard
+                    post={post}
+                    userId={userId}
+                    className='relative px-4 -left-14 lg:-left-8 -top-10'
+                  />
+                </div>
               ))
             ) : (
               <NoResult
@@ -111,12 +115,16 @@ const ProfileDetails = () => {
               />
             )
           ) : userLikedPosts.length > 0 ? (
-            userLikedPosts.map((post: Video, index: number) => (
-              <VideoCard
-                key={index}
-                post={post}
-                userId={userId}
-              />
+            userLikedPosts.map((post: Video) => (
+              <div
+                key={post._id}
+                className='relative'>
+                <VideoCard
+                  post={post}
+                  userId={userId}
+                  className='relative px-4 -left-14 lg:-left-8 -top-10'
+                />
+              </div>
             ))
           ) : (
             <NoResult

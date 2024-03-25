@@ -59,7 +59,7 @@ const Discover = ({ className }: Props) => {
                     {item.icon}
                   </span>
                   <span
-                    className={`font-medium text-md hidden xl:block capitalize`}>
+                    className={`font-medium text-lg max-sm:hidden capitalize`}>
                     {item.name}
                   </span>
                 </div>

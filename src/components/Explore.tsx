@@ -64,7 +64,7 @@ const Explore = ({ video }: { video?: Video }) => {
       id='explore_'
       className='relative -top-10 w-[95%] px-3 py-2 ml-8'>
       <Discover className='overflow-x-scroll' />
-      <div className='relative top-0 flex gap-7 px-3'>
+      <div className='relative top-0 flex gap-7 px-3 flex-wrap justify-center'>
         {allVideos.length ? (
           allVideos.map((video: Video) => (
             <div

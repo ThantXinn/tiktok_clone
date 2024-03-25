@@ -161,7 +161,7 @@ const VideoCard = ({ post, userId, className }: Props) => {
                     </div>
                   )}
                 </div>
-                <div className='flex flex-col lg:gap-10 gap-7 justify-end p-3 *:rounded-full *:px-2 *:bg-slate-100 *:h-10 *:w-10 max-sm:relative max-sm:left-44 max-sm:gap-8 max-sm:*:text-xs max-sm:*:w-8 max-sm:*:h-8 max-sm:-bottom-40 *:relative *:cursor-pointer'>
+                <div className='flex flex-col lg:gap-10 gap-7 justify-end p-3 *:rounded-full *:px-2 *:bg-slate-100 *:h-10 *:w-10 max-sm:relative max-sm:left-44 max-[375px]:left-32 max-sm:gap-8 max-sm:*:text-xs max-sm:*:w-8 max-sm:*:h-8 max-sm:-bottom-40 *:relative *:cursor-pointer'>
                   <div className='flex items-center justify-center'>
                     {session?.user ? (
                       <LikeButton

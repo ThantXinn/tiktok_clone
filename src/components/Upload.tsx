@@ -65,10 +65,10 @@ const Upload = () => {
     setTopic("");
   };
   return (
-    <div className='flex w-full h-full justify-center mb-10 pt-10 absolute left-10 top-0'>
-      <div className='bg-white rounded-lg flex flex-wrap xl:h-[80vh] gap-6 items-center justify-center p-14 pt-7'>
+    <div className='flex w-[92%] h-full justify-center mb-10 pt-10 absolute left-8 top-0'>
+      <div className='bg-white rounded-lg flex flex-wrap xl:h-[80vh] gap-6 items-center justify-center p-14 pt-7 w-[100%]'>
         <div>
-          <div>
+          <div className='flex flex-col items-center justify-center'>
             <h3 className='text-xl font-bold'>Upload Video</h3>
             <p className='text-md text-gray-400 mt-1'>
               Post a video to your account

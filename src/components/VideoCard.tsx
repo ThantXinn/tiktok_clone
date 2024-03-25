@@ -57,6 +57,7 @@ const VideoCard = ({ post, userId, className }: Props) => {
     }
   };
 
+  console.log(className, userId);
   //onClickLike function
   const handleClickLike = async (like: boolean) => {
     if (session?.user) {
@@ -223,7 +224,7 @@ const VideoCard = ({ post, userId, className }: Props) => {
       ) : (
         <div className='relative py-3 gap-2 w-full flex items-center justify-center flex-wrap max-sm:gap-0 -left-14 max-lg:left-0'>
           <div
-            className='relative max-sm:relative w-full md:w-[220px] md:h-[330px] rounded-md overflow-hidden mt-3 bg-black flex items-center justify-center max-sm:-left-10 max-sm:w-[120%] max-sm:h-[390px]'
+            className='relative max-sm:relative w-full md:w-[220px] md:h-[330px] rounded-md overflow-hidden mt-3 bg-black flex items-center justify-center max-sm:left-0 max-sm:w-[120%] max-sm:h-[390px]'
             onMouseEnter={() => setIsHover(true)}
             onMouseLeave={() => setIsHover(false)}>
             <Link href={`/details/${post._id}`}>

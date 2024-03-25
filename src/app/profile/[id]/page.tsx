@@ -104,7 +104,7 @@ const ProfileDetails = () => {
                   <VideoCard
                     post={post}
                     userId={userId}
-                    className='relative px-4 -left-14 lg:-left-8 -top-10'
+                    className='relative px-4 lg:-left-8 -top-10'
                   />
                 </div>
               ))

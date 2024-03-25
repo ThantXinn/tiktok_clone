@@ -80,7 +80,7 @@ const VideoCard = ({ post, userId, className }: Props) => {
       className={`${
         className
           ? className
-          : "ml-4 flex flex-col items-center justify-center py-2 w-full relative md:w-[85%] xl:h-[670px]"
+          : "ml-8 flex flex-col items-center justify-center py-2 w-full relative md:w-[85%] xl:h-[670px] max-sm:h-[600px]"
       } ${
         userId ? "max-sm:w-full absolute" : "max-sm:w-[80%]"
       } max-sm:left-10`}>
@@ -161,7 +161,7 @@ const VideoCard = ({ post, userId, className }: Props) => {
                     </div>
                   )}
                 </div>
-                <div className='flex flex-col lg:gap-10 gap-7 justify-end p-3 *:rounded-full *:px-2 *:bg-slate-100 *:h-10 *:w-10 max-sm:relative max-sm:left-44 max-sm:gap-8 max-sm:*:text-xs max-sm:*:w-8 max-sm:*:h-8 max-sm:-bottom-52 *:relative *:cursor-pointer'>
+                <div className='flex flex-col lg:gap-10 gap-7 justify-end p-3 *:rounded-full *:px-2 *:bg-slate-100 *:h-10 *:w-10 max-sm:relative max-sm:left-44 max-sm:gap-8 max-sm:*:text-xs max-sm:*:w-8 max-sm:*:h-8 max-sm:-bottom-40 *:relative *:cursor-pointer'>
                   <div className='flex items-center justify-center'>
                     {session?.user ? (
                       <LikeButton

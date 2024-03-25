@@ -81,9 +81,7 @@ const VideoCard = ({ post, userId, className }: Props) => {
         className
           ? className
           : "ml-8 flex flex-col items-center justify-center py-2 w-full relative md:w-[85%] xl:h-[670px] max-sm:h-[600px]"
-      } ${
-        userId ? "max-sm:w-full absolute" : "max-sm:w-[80%]"
-      } max-sm:left-10`}>
+      } ${userId ? "max-sm:w-full absolute" : "max-sm:w-[80%]"}`}>
       {!userId ? (
         <div className='flex flex-col px-3 w-full h-screen border-b-[1px] border-gray-200'>
           <div className='flex w-full py-2 sm:py-0 gap-2 sm:gap-0 justify-center'>

@@ -1,3 +1,4 @@
+import { config } from "@/utils/config";
 import { IUser } from "@/utils/types/user";
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
@@ -15,7 +16,7 @@ export const fetchAllUsers = createAsyncThunk(
     "app/fetchAllUsers",
     async (optioins:any,thankApi) => {
         try {
-            const res = await fetch(`/api/user`, {
+            const res = await fetch(`${config.apiBaseUrl}/api/user`, {
                 method:"GET"
             })
             const  {allUserInfo}  = await res.json();

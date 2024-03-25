@@ -4,6 +4,7 @@ import Discover from "@/components/Discover";
 import LikeButton from "@/components/LikeButton";
 import NoResult from "@/components/NoResult";
 import VideoCard from "@/components/VideoCard";
+import { config } from "@/utils/config";
 import { allPostsQuery, topicPostsQuery } from "@/utils/groq";
 import { Video } from "@/utils/types/video";
 import { useSession } from "next-auth/react";
@@ -42,7 +43,7 @@ const Explore = ({ video }: { video?: Video }) => {
   const handleClickLike = async (like: boolean) => {
     if (session) {
       allVideos.map(async (item) => {
-        const res = await fetch(`/api/like`, {
+        const res = await fetch(`${config.apiBaseUrl}/api/like`, {
           method: "PUT",
           headers: { "content-type": "application/json" },
           body: JSON.stringify({

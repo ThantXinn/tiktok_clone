@@ -2,6 +2,7 @@
 "use client";
 import Comments from "@/components/Comments";
 import LikeButton from "@/components/LikeButton";
+import { config } from "@/utils/config";
 import { useAppSelector } from "@/utils/store/hook";
 import { IUser } from "@/utils/types/user";
 import { Video } from "@/utils/types/video";
@@ -38,7 +39,7 @@ const Details = ({ videoProps }: Props) => {
 
   useEffect(() => {
     const detailPost = async () => {
-      const res = await fetch(`/api/post/${postId}`, {
+      const res = await fetch(`${config.apiBaseUrl}/api/post/${postId}`, {
         method: "GET",
       });
       const res_PostDetails: Video = await res.json();
@@ -53,11 +54,11 @@ const Details = ({ videoProps }: Props) => {
     }
   }, [muted]);
 
-  console.log(postId);
+  //console.log(postId);
   //onClickLike function
   const handleClickLike = async (like: boolean) => {
     if (userProfile) {
-      const res = await fetch(`/api/like`, {
+      const res = await fetch(`${config.apiBaseUrl}/api/like`, {
         method: "PUT",
         headers: { "content-type": "application/json" },
         body: JSON.stringify({
@@ -87,7 +88,7 @@ const Details = ({ videoProps }: Props) => {
     if (userProfile && addComment) {
       setIsPostingComment(true);
 
-      const res = await fetch(`/api/post/${postId}`, {
+      const res = await fetch(`${config.apiBaseUrl}/api/post/${postId}`, {
         method: "PUT",
         headers: { "content-type": "applicatioin/json" },
         body: JSON.stringify({

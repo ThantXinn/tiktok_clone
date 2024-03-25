@@ -3,6 +3,7 @@
 import LikeButton from "@/components/LikeButton";
 import NoResult from "@/components/NoResult";
 import VideoCard from "@/components/VideoCard";
+import { config } from "@/utils/config";
 import { searchPostsQuery } from "@/utils/groq";
 import { useAppSelector } from "@/utils/store/hook";
 import { IUser } from "@/utils/types/user";
@@ -52,7 +53,7 @@ const Search = ({ videos, video }: { videos?: Video[]; video?: Video }) => {
   const handleClickLike = async (like: boolean) => {
     if (session) {
       serachResult.map(async (item) => {
-        const res = await fetch(`/api/like`, {
+        const res = await fetch(`${config.apiBaseUrl}/api/like`, {
           method: "PUT",
           headers: { "content-type": "application/json" },
           body: JSON.stringify({

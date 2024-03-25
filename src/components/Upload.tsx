@@ -1,5 +1,6 @@
 /** @format */
 "use client";
+import { config } from "@/utils/config";
 import { topics } from "@/utils/constants";
 import { useSession } from "next-auth/react";
 import { SanityAssetDocument } from "next-sanity";
@@ -45,7 +46,7 @@ const Upload = () => {
     if (caption && topic && videoAsset?._id) {
       setSavingPost(true);
 
-      await fetch(`/api/post`, {
+      await fetch(`${config.apiBaseUrl}/api/post`, {
         method: "POST",
         headers: {
           "content-type": "application/json",

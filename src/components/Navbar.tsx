@@ -1,5 +1,6 @@
 /** @format */
 "use client";
+import { config } from "@/utils/config";
 import { useAppDispatch } from "@/utils/store/hook";
 import { addUsers } from "@/utils/store/slices/appSlice";
 import { signIn, useSession } from "next-auth/react";
@@ -32,7 +33,7 @@ const Navbar = () => {
           }),
         );
 
-        await fetch("/api/user", {
+        await fetch(`${config.apiBaseUrl}/api/user`, {
           method: "POST",
           headers: { "content-type": "application/json" },
           body: JSON.stringify({ session }),

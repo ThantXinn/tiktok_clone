@@ -8,6 +8,7 @@ import { useEffect, useRef, useState } from "react";
 import { BsMusicNoteBeamed } from "react-icons/bs";
 import { FaBookmark, FaCommentDots } from "react-icons/fa";
 
+import { config } from "@/utils/config";
 import { FaHeart, FaPause, FaPlay, FaShare } from "react-icons/fa6";
 import {
   RiVerifiedBadgeFill,
@@ -30,7 +31,7 @@ const VideoCard = ({ post, userId, className }: Props) => {
   const { data: session } = useSession();
   useEffect(() => {
     const detailPost = async () => {
-      const res = await fetch(`/api/post/${post._id}`, {
+      const res = await fetch(`${config.apiBaseUrl}/api/post/${post._id}`, {
         method: "GET",
       });
       const res_PostDetails: Video = await res.json();
@@ -59,7 +60,7 @@ const VideoCard = ({ post, userId, className }: Props) => {
   //onClickLike function
   const handleClickLike = async (like: boolean) => {
     if (session?.user) {
-      const res = await fetch(`/api/like`, {
+      const res = await fetch(`${config.apiBaseUrl}/api/like`, {
         method: "PUT",
         headers: { "content-type": "application/json" },
         body: JSON.stringify({

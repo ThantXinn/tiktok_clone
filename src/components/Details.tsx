@@ -107,7 +107,7 @@ const Details = ({ videoProps }: Props) => {
   return (
     <div
       id='details_'
-      className='flex lg:flex-nowrap flex-wrap max-sm:flex-col max-sm:justify-center max-sm:items-center w-screen fixed max-sm:relative max-sm:w-full right-0 top-[0px] z-20 max-sm:z-0 h-full max-sm:-left-6 bg-white'>
+      className='flex lg:flex-nowrap flex-wrap max-sm:flex-col max-sm:justify-center max-sm:items-center w-screen fixed max-sm:relative right-0 top-[0px] z-20 max-sm:z-0 h-full max-sm:-left-12 max-sm:-top-12 bg-white'>
       {/* left side video section*/}
       <div className='flex flex-col w-[58%] max-sm:h-[50vh]'>
         <button

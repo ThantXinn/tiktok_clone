@@ -4,6 +4,9 @@ interface Config{
     googleClientSecret: string,
     githubId: string,
     githubSecret: string,
+    sanityId: string,
+    sanityDataset: string,
+    sanityApitoken:string,
 }
 
 export const config: Config = {
@@ -12,4 +15,7 @@ export const config: Config = {
     googleClientSecret: process.env.GOOGLE_CLIENT_SECRET || "",
     githubId: process.env.GITHUB_ID || "",
     githubSecret: process.env.GITHUB_SECRET || "",
+    sanityId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID!,
+    sanityDataset: process.env.NEXT_PUBLIC_SANITY_DATASET!,
+    sanityApitoken: process.env.NEXT_PUBLIC_SANITY_API_TOKEN!,
 }

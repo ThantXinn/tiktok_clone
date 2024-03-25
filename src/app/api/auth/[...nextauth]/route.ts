@@ -16,7 +16,7 @@ const handler = NextAuth({
   providers: [
     GoogleProvider({
       clientId: config.googleClientId,
-      clientSecret: config.githubSecret,
+      clientSecret: config.googleClientSecret,
     }),
     GitHubProvider({
     clientId: config.githubId,

@@ -4,25 +4,40 @@ import Discover from "@/components/Discover";
 import LikeButton from "@/components/LikeButton";
 import NoResult from "@/components/NoResult";
 import VideoCard from "@/components/VideoCard";
-import { allPostsQuery } from "@/utils/groq";
+import { allPostsQuery, topicPostsQuery } from "@/utils/groq";
 import { Video } from "@/utils/types/video";
 import { useSession } from "next-auth/react";
 import Image from "next/image";
+import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import { MdOutlineVideocamOff } from "react-icons/md";
 import { client } from "../../sanity/lib/client";
 
 const Explore = ({ video }: { video?: Video }) => {
+  const searchParams = useSearchParams().get("topic");
   const [allVideos, setAllVidoes] = useState<Video[]>([]);
+  const [filterVideos, setFilterVideos] = useState<Video[]>([]);
   const [postDetails, setPostDetails] = useState<Video>(video!);
   const { data: session } = useSession();
+
   useEffect(() => {
-    const fetch_searchResult = async () => {
-      const res: Video[] = await client.fetch(allPostsQuery());
-      setAllVidoes(res);
-    };
-    fetch_searchResult();
-  }, []);
+    if (searchParams !== null && searchParams !== undefined) {
+      const fetch_filterVideos = async () => {
+        const res_filterVideos: Video[] = await client.fetch(
+          topicPostsQuery(searchParams!),
+        );
+        setAllVidoes(res_filterVideos);
+      };
+      fetch_filterVideos();
+    } else {
+      const fetch_allVideos = async () => {
+        const res: Video[] = await client.fetch(allPostsQuery());
+        setAllVidoes(res);
+      };
+      fetch_allVideos();
+    }
+  }, [searchParams]);
+
   //onClickLike function
   const handleClickLike = async (like: boolean) => {
     if (session) {

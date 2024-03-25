@@ -49,20 +49,22 @@ const Discover = ({ className }: Props) => {
           modules={[Navigation, Pagination, Mousewheel, Keyboard]}
           className='mySwiper'>
           {topics?.map((item) => (
-            <Link
-              href={`/?topic=${item.name}`}
-              key={item.name}>
-              <SwiperSlide
-                className={topic === item.name ? activeTopicStyle : topicStyle}>
-                <span className='font-bold text-xl xl:text-md '>
-                  {item.icon}
-                </span>
-                <span
-                  className={`font-medium text-md hidden xl:block capitalize`}>
-                  {item.name}
-                </span>
-              </SwiperSlide>
-            </Link>
+            <SwiperSlide key={item.name}>
+              <Link href={`explore/?topic=${item.name}`}>
+                <div
+                  className={
+                    topic === item.name ? activeTopicStyle : topicStyle
+                  }>
+                  <span className='font-bold text-xl xl:text-md '>
+                    {item.icon}
+                  </span>
+                  <span
+                    className={`font-medium text-md hidden xl:block capitalize`}>
+                    {item.name}
+                  </span>
+                </div>
+              </Link>
+            </SwiperSlide>
           ))}
         </Swiper>
       </div>

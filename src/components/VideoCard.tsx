@@ -57,7 +57,7 @@ const VideoCard = ({ post, userId, className }: Props) => {
     }
   };
 
-  console.log(className, userId);
+  //console.log(className, userId);
   //onClickLike function
   const handleClickLike = async (like: boolean) => {
     if (session?.user) {

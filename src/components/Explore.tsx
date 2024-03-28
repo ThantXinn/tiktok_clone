@@ -17,7 +17,6 @@ import { client } from "../../sanity/lib/client";
 const Explore = ({ video }: { video?: Video }) => {
   const searchParams = useSearchParams().get("topic");
   const [allVideos, setAllVidoes] = useState<Video[]>([]);
-  const [filterVideos, setFilterVideos] = useState<Video[]>([]);
   const [postDetails, setPostDetails] = useState<Video>(video!);
   const { data: session } = useSession();
 
